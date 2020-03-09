@@ -16,6 +16,7 @@ int main(void)
     int nickels = 0;
     int pennies = 0;
     
+    
 
     if (change > 0)
     {
@@ -40,10 +41,8 @@ int main(void)
             pennies++;
         }
         //list and quantity of coins
-        printf("%d quarter(s)\n", quarters);
-        printf("%d dime(s)\n", dimes);
-        printf("%d nickel(s)\n", nickels);
-        printf("%d pennie(s)\n", pennies);
+        int coins = quarters + dimes + nickels + pennies;
+        printf("%d\n", coins);
     } 
     else 
     {
