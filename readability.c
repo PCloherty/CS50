@@ -17,9 +17,9 @@ int main(void)
     int letters = countletters(text);
     int words = countwords(text);
     int sentences = countsentences(text);
-    //printf("letters: %i\n", letters);
-    //printf("words: %i\n", words);
-    //printf("sentences: %i\n", sentences);
+    printf("letters: %i\n", letters);
+    printf("words: %i\n", words);
+    printf("sentences: %i\n", sentences);
     int grade = calcindexnum(letters, words, sentences);
     if (grade < 1)
     {
