@@ -36,7 +36,7 @@ int main(void)
     
 }
 
-//get amoutn of letters
+//get amount of letters
 int countletters(string text)
 {
     int lettercount = 0;
@@ -70,14 +70,10 @@ int countsentences(string text)
     return sentencescount;
 }
 
-
-
-
-
 //calculate grade
 int calcindexnum(int letters, int words, int sentences)
 {
-    float L = ((float) letters/ (float) words) * 100 ;
+    float L = ((float) letters / (float) words) * 100 ;
     float S = ((float) sentences / (float) words) * 100;
     float indexraw = 0.0588 * L - 0.296 * S - 15.8;
     int index = round(indexraw);
