@@ -79,7 +79,7 @@ int calcindexnum(int letters, int words, int sentences)
 {
     float L = (letters / words) * 100 ;
     float S = (sentences / words) * 100;
-    float indexraw = (0.0588 * L) - (0.296 * S) - 15.8;
+    float indexraw = 0.0588 * L - 0.296 * S - 15.8;
     int index = round(indexraw);
     return index;
 }
