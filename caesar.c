@@ -23,7 +23,7 @@ int main(int argc, string argv[])
     for (int i=0; i < strlen(plaintext); i++)
     {   
         char letter= plaintext[i];
-        if(isalpha(letter)== 1)
+        if(isalpha(letter)== 0)
         {
           printf("%c",letter);
         } 
