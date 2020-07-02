@@ -20,34 +20,36 @@ int main(int argc, string argv[])
     else
     { 
         for (int i=0; i < strlen(argv[1]); i++)
-        if (isdigit(argv[1][i])== 0)
-        {   
-            printf("Usage: ./caesar key\n");
-            return 1;
-        } else {
-            string plaintext = get_string("plaintext: ");
-            printf("ciphertext: ");
-            int key = atoi(argv[1]);
-            for (int j=0; j < strlen(plaintext); j++)
+        {
+            if (isdigit(argv[1][i])== 0)
             {   
-                char letter= plaintext[j];
-                if(isalpha(letter)== 0)
-                {
-                    printf("%c",letter);
-                } 
-                else
-                {
-                    if(isupper(letter)){
-                        printf("%c",((letter+key-65)%26)+65);
-                    }
-                    else if(islower(letter))
-                    {
-                        printf("%c",((letter+key-97)%26)+97);
-                    }
-                }    
-            }
-        printf("\n");
+                printf("Usage: ./caesar key\n");
+                return 1;
+            } 
         }
+    }
+    string plaintext = get_string("plaintext: ");
+    printf("ciphertext: ");
+    int key = atoi(argv[1]);
+    for (int j=0; j < strlen(plaintext); j++)
+    {   
+    char letter= plaintext[j];
+    if(isalpha(letter)== 0)
+    {
+        printf("%c",letter);
+        } 
+        else
+        {
+            if(isupper(letter)){
+                printf("%c",((letter+key-65)%26)+65);
+            }
+            else if(islower(letter))
+            {
+                printf("%c",((letter+key-97)%26)+97);
+            }
+        }    
+     printf("\n");
+   
     
     }
 }
