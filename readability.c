@@ -13,7 +13,6 @@ int main(void)
     int sentencecount = 0;
     
     string text = get_string("Text: ");
-    printf("Output: ");
     for (int i = 0; i < strlen(text); i++)
     {
         if (isalpha(text[i]))
@@ -30,18 +29,15 @@ int main(void)
         }
         
     }
-    printf("letters: %i\n", lettercount);
-    printf("words: %i\n", wordcount);
-    printf("sentences: %i\n", sentencecount);
     int grade = calcindexnum(lettercount, wordcount,
                             sentencecount);
     if (grade < 1)
     {
-        printf("Before Grade 1");
+        printf("Before Grade 1\n");
     } 
     else if (grade > 16)
     {
-        printf("Grade 16+");
+        printf("Grade 16+\n");
     } 
     else
     {
