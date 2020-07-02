@@ -48,8 +48,9 @@ int main(int argc, string argv[])
                 printf("%c",((letter+key-97)%26)+97);
             }
         }    
-     printf("\n");
+     
    
     
     }
+    printf("\n");
 }
