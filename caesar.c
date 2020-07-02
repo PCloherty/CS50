@@ -17,8 +17,8 @@ int main(int argc, string argv[])
         printf("Usage: ./caesar key\n");
         return 1;
     }
-    string plaintext = get_string("Plaintext: ");
-    printf("Ciphertext: ");
+    string plaintext = get_string("plaintext: ");
+    printf("ciphertext: ");
     int key = atoi(argv[1]);
     for (int i=0; i < strlen(plaintext); i++)
     {   
