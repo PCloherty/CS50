@@ -81,8 +81,6 @@ bool vote(string name)  //search the candidates array tmatch with the input name
 void print_winner(void)
 {
     int highest_vote = 0;
-    for (int j = 0 ; j < 1 ; j++ )
-    {
         if (highest_vote == 0)
         {
             for (int i = 0 ; i <candidate_count ; i++ )
@@ -92,18 +90,16 @@ void print_winner(void)
                     highest_vote = candidates[i].votes;
                 }
             }
-        } else 
-        {
-            for (int i = 0 ; i <candidate_count ; i++ )
+        } 
+            for (int j = 0 ; j <candidate_count ; j++ )
             {
-                if (candidates[i].votes == highest_vote)
+                if (candidates[j].votes == highest_vote)
                 {
-                    printf("%s\n",candidates[i].name);
+                    printf("%s\n",candidates[j].name);
                 }
             }
-            j++;
-        }
-    }
+            
+   
     
         
     // TODO
