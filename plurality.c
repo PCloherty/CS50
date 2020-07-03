@@ -64,11 +64,13 @@ int main(int argc, string argv[])
 }
 
 // Update vote totals given a new vote
-bool vote(string name)  //loop the candidates array to match with the input names, if found candidate.votes++ and return true
-{                       //if no match, leave votes alone and return false
-    for(int i = 0 ; i <candidate_count ; i++ )
+bool vote(string name)  
+//loop the candidates array to match with the input names, if found candidate.votes++ and return true
+//if no match, leave votes alone and return false
+{
+    for (int i = 0 ; i < candidate_count ; i++)
     {
-        if(strcmp(name,candidates[i].name)==0)
+        if (strcmp(name, candidates[i].name) == 0)
         {
             candidates[i].votes++;
             return true;
@@ -78,21 +80,23 @@ bool vote(string name)  //loop the candidates array to match with the input name
 }
 
 // Print the winner (or winners) of the election
-void print_winner(void) //loop through to get record of highest vote
-{                       //then loop again to check if the candidates[j].votes match the highest vote, if yes then print .name 
+void print_winner(void) 
+//loop through to get record of highest vote
+//then loop again to check if the candidates[j].votes match the highest vote, if yes then print .name 
+{
     int highest_vote = 0;
-    for (int i = 0 ; i <candidate_count ; i++ )
+    for (int i = 0 ; i < candidate_count ; i++)
     {
         if (candidates[i].votes > highest_vote)
         {
             highest_vote = candidates[i].votes;
         }
     }
-    for (int j = 0 ; j <candidate_count ; j++ )
+    for (int j = 0 ; j < candidate_count ; j++)
     {
         if (candidates[j].votes == highest_vote)
         {
-            printf("%s\n",candidates[j].name);
+            printf("%s\n", candidates[j].name);
         }
     }
             
@@ -100,6 +104,6 @@ void print_winner(void) //loop through to get record of highest vote
     
         
     // TODO
-    return;
+    return true;
 }
 
