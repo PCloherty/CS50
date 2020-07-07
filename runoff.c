@@ -149,7 +149,7 @@ void tabulate(void)
         {
             if (preferences[i][j] && !candidates[i].eliminated)
             {
-                candidates[j].votes+=1;
+                candidates[j].votes++;
             }
         }
     }
