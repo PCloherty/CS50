@@ -172,6 +172,7 @@ bool print_winner(void)
         {
             printf("Winner is: %s/n",candidates[i].name);
             return true;
+            break;
         }
     }
     // TODO
