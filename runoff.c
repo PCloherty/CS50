@@ -202,9 +202,10 @@ bool is_tie(int min)
         {
             return true;
         }
-    }
     // TODO
+    }
     return false;
+    
 }
 
 // Eliminate the candidate (or candidiates) in last place
