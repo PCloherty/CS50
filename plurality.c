@@ -99,11 +99,5 @@ void print_winner(void)
             printf("%s\n", candidates[j].name);
         }
     }
-            
-   
-    
-        
-    // TODO
-    return true;
 }
 
