@@ -77,5 +77,46 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    //create avariable the same height and width for blurred output while keeping original values intact
+        //2d array and copy the values into the new RGBTRIPLE
+    
+    //create copy to ref
+    RGBTRIPLE refImg[height][width];
+   
+    
+    for ( int i = 0; i < height; i++)
+    {
+        for ( int j = 0; j < width; j++)
+        {
+          int refR=0 , refG=0, refB=0, cells=0;
+          for (int k = i-1; k< i+1;k++)
+          {
+              for(int l = j-1;l<j+1;l++)
+              {
+                  if(k > -1 && k <=height && l>-1 &&l <=width)
+                  {
+                    refR= refR+image[l][k].rgbtRed;
+                    refB= refB+image[l][k].rgbtBlue;
+                    refG= refG+image[l][k].rgbtGreen;
+                    cells++;
+                  }
+              }
+          }
+
+            refImg[i][j].rgbtRed = round(refR / cells);
+            refImg[i][j].rgbtBlue = round(refB / cells);
+            refImg[i][j].rgbtGreen = round(refG / cells);
+        }
+    }
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            image[i][j].rgbtRed = refImg[i][j].rgbtRed;
+            image[i][j].rgbtBlue = refImg[i][j].rgbtBlue;
+            image[i][j].rgbtGreen = refImg[i][j].rgbtGreen;
+        }
+    }
     return;
 }
