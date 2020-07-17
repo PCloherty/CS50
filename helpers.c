@@ -95,9 +95,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
               {
                   if((k > -1  && k < height) || (l > -1 && l < width))
                   {
-                    refR= refR+image[l][k].rgbtRed;
-                    refB= refB+image[l][k].rgbtBlue;
-                    refG= refG+image[l][k].rgbtGreen;
+                    refR= refR+image[k][l].rgbtRed;
+                    refB= refB+image[k][l].rgbtBlue;
+                    refG= refG+image[k][l].rgbtGreen;
                     cells++;
                   }
               }
