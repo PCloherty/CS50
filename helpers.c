@@ -8,10 +8,10 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     {  
         for (int j = 0; j < width; j++)
         { 
-            float mean = round(( image[i][j].rgbtRed +  image[i][j].rgbtGreen + image[i][j].rgbtBlue ) / 3.00); 
-            image[i][j].rgbtRed= mean;
-            image[i][j].rgbtBlue= mean;
-            image[i][j].rgbtGreen= mean;
+            float mean = round((image[i][j].rgbtRed +  image[i][j].rgbtGreen + image[i][j].rgbtBlue) / 3.00); 
+            image[i][j].rgbtRed = mean;
+            image[i][j].rgbtBlue = mean;
+            image[i][j].rgbtGreen = mean;
         }
     }
     return;
@@ -56,10 +56,10 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width / 2; j++)
         {   
           
-                RGBTRIPLE temp = image[i][j];
-                image[i][j] = image[i][width - (j + 1)];
-                image[i][j / 2] = image[i][j / 2];
-                image[i][width-(j + 1)] = temp;
+            RGBTRIPLE temp = image[i][j];
+            image[i][j] = image[i][width - (j + 1)];
+            image[i][j / 2] = image[i][j / 2];
+            image[i][width - (j + 1)] = temp;
         }
     }    
     return;
@@ -69,24 +69,24 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE refImg[height][width];
-    for ( int i = 0; i < height; i++)
+    for (int i = 0; i < height; i++)
     {
-        for ( int j = 0; j < width; j++)
+        for (int j = 0; j < width; j++)
         {
         
             refImg[i][j] = image[i][j];
             
-            float refR = 0.0 , refG = 0.0, refB = 0.0; 
+            float refR = 0.0, refG = 0.0, refB = 0.0; 
             int cells = 0;
-            for (int k = -1; k < 2;k++)
+            for (int k = -1; k < 2; k++)
             {
-                for (int l =-1; l < 2; l++)
+                for (int l = -1; l < 2; l++)
                 {
-                    if((i+k) > -1  && (i+k) < height &&(j+l) > -1 && (j+l) <width)
+                    if ((i + k) > -1 && (i + k) < height && (j + l) > -1 && (j + l) < width)
                     {
-                        refR += image[i+k][j+l].rgbtRed;
-                        refB += image[i+k][j+l].rgbtBlue;
-                        refG += image[i+k][j+l].rgbtGreen;
+                        refR += image[i + k][j + l].rgbtRed;
+                        refB += image[i + k][j + l].rgbtBlue;
+                        refG += image[i + k][j + l].rgbtGreen;
                         cells++;
                     }
                 }
@@ -98,11 +98,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             refImg[i][j].rgbtGreen = round(refG /  cells);
             
               
-          }
+        }
     }
-    for ( int i = 0; i < height; i++)
+    for (int i = 0; i < height; i++)
     {
-        for ( int j = 0; j < width; j++)
+        for (int j = 0; j < width; j++)
         {
             image[i][j].rgbtRed = refImg[i][j].rgbtRed;
             image[i][j].rgbtBlue = refImg[i][j].rgbtBlue;
