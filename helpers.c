@@ -84,9 +84,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     RGBTRIPLE refImg[height][width];
    
     
-    for ( int i = 0; i < height; i++)
+    for ( int i = 0; i <= height; i++)
     {
-        for ( int j = 0; j < width; j++)
+        for ( int j = 0; j <= width; j++)
         {
             
           float refR=0.0 , refG=0.0, refB=0.0, cells=0;
@@ -94,7 +94,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
           {
               for (int l =( j-1 ); l< ( j+1 ); l++)
               {
-                  if((k > -1  && k <= height) || (l > -1 && l <= width))
+                  if((k > -1  && k < height) || (l > -1 && l <width))
                   {
                     refR= refR+image[k][l].rgbtRed;
                     refB= refB+image[k][l].rgbtBlue;
