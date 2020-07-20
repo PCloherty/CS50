@@ -4,11 +4,11 @@
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
-    for(int i = 0; i < height; i++)
+    for (int i = 0; i < height; i++)
     {  
-        for(int j = 0; j < width; j++)
+        for (int j = 0; j < width; j++)
         { 
-             float mean = round(( image[i][j].rgbtRed +  image[i][j].rgbtGreen + image[i][j].rgbtBlue )/3.00); 
+            float mean = round(( image[i][j].rgbtRed +  image[i][j].rgbtGreen + image[i][j].rgbtBlue ) / 3.00); 
             image[i][j].rgbtRed= mean;
             image[i][j].rgbtBlue= mean;
             image[i][j].rgbtGreen= mean;
@@ -20,9 +20,9 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 // Convert image to sepia
 void sepia(int height, int width, RGBTRIPLE image[height][width])
 {
-    for(int i = 0; i < height; i++)
+    for (int i = 0; i < height; i++)
     {  
-        for(int j = 0; j < width; j++)
+        for (int j = 0; j < width; j++)
         { 
             float sepiaRed = round(.393 * image[i][j].rgbtRed + .769 * image[i][j].rgbtGreen + .189 * image[i][j].rgbtBlue);
             float sepiaGreen = round(.349 * image[i][j].rgbtRed + .686 * image[i][j].rgbtGreen + .168 * image[i][j].rgbtBlue);
@@ -39,36 +39,27 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             {
                 sepiaBlue = 255;
             }
-            
             image[i][j].rgbtRed = sepiaRed;
             image[i][j].rgbtGreen = sepiaGreen;
             image[i][j].rgbtBlue = sepiaBlue;
-            
         }
     }
     return;
 }
 
 // Reflect image horizontally
-//i = down and j = across, 
-//temp = array[i][j], array[i][j] = array[i][width.length-j], array[i][width.legnth-j] = temp
-//^swapping the first and last pixel in an row
 
-//using a temp variable swap with the width
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-    for(int i = 0; i < height; i++)
+    for (int i = 0; i < height; i++)
     {  
-        for(int j = 0; j < width / 2; j++)
+        for (int j = 0; j < width / 2; j++)
         {   
           
                 RGBTRIPLE temp = image[i][j];
-                image[i][j] = image[i][width-(j+1)];
-                image[i][j/2] = image[i][j/2];
-                image[i][width-(j+1)] = temp;
-                
-            
-                
+                image[i][j] = image[i][width - (j + 1)];
+                image[i][j / 2] = image[i][j / 2];
+                image[i][width-(j + 1)] = temp;
         }
     }    
     return;
@@ -77,13 +68,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
-    //create avariable the same height and width for blurred output while keeping original values intact
-        //2d array and copy the values into the new RGBTRIPLE
-    
-    //create copy to ref
     RGBTRIPLE refImg[height][width];
-   
-    
     for ( int i = 0; i < height; i++)
     {
         for ( int j = 0; j < width; j++)
@@ -91,13 +76,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         
             refImg[i][j] = image[i][j];
             
-            float refR=0.0 , refG=0.0, refB=0.0; 
-            int cells =0;
-            for (int k = -1; k<=1;k++)
+            float refR = 0.0 , refG = 0.0, refB = 0.0; 
+            int cells = 0;
+            for (int k = -1; k < 2;k++)
             {
-                for (int l =-1; l<=1; l++)
+                for (int l =-1; l < 2; l++)
                 {
-                    if((i+k) >=0  && (i+k) < height &&(j+l) >=0 && (j+l) <width)
+                    if((i+k) > -1  && (i+k) < height &&(j+l) > -1 && (j+l) <width)
                     {
                         refR += image[i+k][j+l].rgbtRed;
                         refB += image[i+k][j+l].rgbtBlue;
