@@ -87,28 +87,30 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     for ( int i = 0; i < height; i++)
     {
         for ( int j = 0; j < width; j++)
-        {refImg[i][j] = image[i][j];
+        {
+        
+            refImg[i][j] = image[i][j];
             
-          float refR=0.0 , refG=0.0, refB=0.0; 
-          int cells =0;
-          for (int k = -1; k<=1;k++)
-          {
-              for (int l =-1; l<=1; l++)
-              {
-                  if((k > -1  && k < height) || (l > -1 && l <width))
-                  {
-                    refR= refR+image[i+k][j+l].rgbtRed;
-                    refB= refB+image[i+k][j+l].rgbtBlue;
-                    refG= refG+image[i+k][j+l].rgbtGreen;
-                    cells++;
-                  }
-              }
-          }
+            float refR=0.0 , refG=0.0, refB=0.0; 
+            int cells =0;
+            for (int k = -1; k<=1;k++)
+            {
+                for (int l =-1; l<=1; l++)
+                {
+                    if((k > -1  && k < height) || (l > -1 && l <width))
+                    {
+                        refR= refR+image[i+k][j+l].rgbtRed;
+                        refB= refB+image[i+k][j+l].rgbtBlue;
+                        refG= refG+image[i+k][j+l].rgbtGreen;
+                        cells++;
+                    }
+                }
+            }
           
 
-            refImg[i][j].rgbtRed = round(refR / (float) cells);
-            refImg[i][j].rgbtBlue = round(refB / (float) cells);
-            refImg[i][j].rgbtGreen = round(refG / (float) cells);
+            refImg[i][j].rgbtRed = round(refR /  cells);
+            refImg[i][j].rgbtBlue = round(refB /  cells);
+            refImg[i][j].rgbtGreen = round(refG /  cells);
             
               
           }
