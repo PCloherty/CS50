@@ -102,12 +102,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     cells++;
                   }
               }
+          }
           
 
             refImg[i][j].rgbtRed = round(refR / cells);
             refImg[i][j].rgbtBlue = round(refB / cells);
             refImg[i][j].rgbtGreen = round(refG / cells);
-            }
+            
               
           }
     }
