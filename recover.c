@@ -1,19 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 int main(int argc, char *argv[])
 {
-    //correct parameters
     if (argc != 2)
     {
-        printf("correct format is ./recover image");
+        printf("Usage: ./recover image\n");
         return 1;
     }
-    FILE *file=fopen(argv[1],"r");
-    if(file==NULL)
+    if (fopen(argv[1], "r") == NULL)
     {
-        printf("cant open");
+        printf("File failed to open.");
         return 1;
     }
-
+    FILE *image = fopen(argv[1], "r");
+    char ch;
+    while ( (ch = fgetc(image)) != EOF)
+    {
+        printf("%c",ch);
+    }
 }
