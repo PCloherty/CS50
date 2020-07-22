@@ -42,10 +42,10 @@ int main(int argc, char *argv[])
                  fwrite(buffer,1,512, recovered);
                 imgNum++;
             }
-        } //else if(imgNum>0)
-        //{
-          //  fwrite = (buffer, sizeof(uint8_t), 1,recovered);
-        //}
+        } else if(imgNum>0)
+        {
+            fwrite(buffer,1,512,recovered);
+        }
     }
     fclose(recovered);
 }
