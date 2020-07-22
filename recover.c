@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     //
     if (fopen(argv[1], "r") == NULL)
     {
-        printf("File failed to open.");
+        printf("File failed to open.\n");
         return 1;
     }
     //open memory card
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     FILE *recovered = NULL;
     BYTE buffer [512];
     int imgNum = 0;
-    char fileName [12];
+    char fileName [8];
     //fread(data(size of indevidual bytes, number of bytes,file to read from))
     while (fread(buffer,1,512,image))
     {
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
                 fwrite(buffer,1,512, recovered);
                 imgNum++;
             } else {
-                fclose(image);
+                fclose(recovered);
                 sprintf(fileName, "%03i.jpg", imgNum);
                 recovered = fopen(fileName, "w");
                  fwrite(buffer,1,512, recovered);
