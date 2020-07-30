@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "dictionary.h"
+#include <string.h>
 
 // Represents a node in a hash table
 typedef struct node
@@ -18,6 +19,8 @@ const unsigned int N = 1;
 
 // Hash table
 node *table[N];
+
+
 
 // Returns true if word is in dictionary else false
 bool check(const char *word)
@@ -37,18 +40,28 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {//1st
     FILE *dictionary_ptr = fopen(dictionary, "r");
-    
+    if (dictionary_ptr == NULL)
+    {
+        return false;
+    }
     char word[LENGTH+1];
     while(fscanf(dictionary_ptr,"%s",word) !=EOF)
     {
+        fscanf(dictionary_ptr, "%s", word);
         node *n = malloc(sizeof(node));
         if(n==NULL)
         {
+            unload();
             return 1;
         }
+        strcpy(n->word,word);
+        
+        
     }
+    fclose(dictionary_ptr);
+    return true;
     // TODO
-    return false;
+    
 }
 
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
