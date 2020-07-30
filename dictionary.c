@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "dictionary.h"
 #include <string.h>
+//#include <srings.h>
 
 // Represents a node in a hash table
 typedef struct node
@@ -15,6 +16,9 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
+//first letter
+//first two letters
+//math using all letters
 const unsigned int N = 10;
 
 // Hash table
@@ -33,6 +37,11 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {//2nd
+//input: word, alphanumeric and possibly apostrephes
+//output numerical index between 0 and n-1, inclusive
+//deterministic
+//largern = more buckets
+
     // TODO
     return 0;
 }
@@ -51,13 +60,14 @@ bool load(const char *dictionary)
         node *n = malloc(sizeof(node));
         strcpy(n->word,word);
         int index = hash(word);
-        if (table[index]==NULL){
+        if (table[index]==NULL)
+        {
             n->next=NULL;
             table[index]=n;
         }
         else
         {
-            n-> next= table[index];
+            n-> next= table[index]-> next;
             table[index]=n;
         }
         count++;
