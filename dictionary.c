@@ -15,11 +15,12 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = 1000;
+const unsigned int N = 10000;
 
 // Hash table
 node *table[N];
 
+int count = 0;
 
 
 // Returns true if word is in dictionary else false
@@ -47,16 +48,19 @@ bool load(const char *dictionary)
     char word[LENGTH+1];
     while(fscanf(dictionary_ptr,"%s",word) !=EOF)
     {
-        fscanf(dictionary_ptr, "%s", word);
         node *n = malloc(sizeof(node));
-        if(n==NULL)
-        {
-            unload();
-            return 1;
-        }
         strcpy(n->word,word);
-        
-        
+        int index = hash(word);
+        if (table[index]==NULL){
+            n->next=NULL;
+            table[index]=n;
+        }
+        else
+        {
+            n-> next= table[index];
+            table[index]=n;
+        }
+        count++;
     }
     fclose(dictionary_ptr);
     return true;
