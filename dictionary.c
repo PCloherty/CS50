@@ -34,7 +34,7 @@ bool check(const char *word)
     // TODO
     char *caseCopy = malloc(strlen(word));
     strcpy(caseCopy,word);
-    int toLower(int caseCopy);
+    int tolower(int caseCopy);
     int index = hash(caseCopy);
     node *pointer = table[index];
     while (pointer !=NULL)
