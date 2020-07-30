@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "dictionary.h"
 #include <string.h>
+#include <ctype.h>
 //#include <srings.h>
 
 // Represents a node in a hash table
@@ -31,19 +32,40 @@ int count = 0;
 bool check(const char *word)
 {//4th
     // TODO
+    char *caseCopy = malloc(strlen(word));
+    strcpy(caseCopy,word);
+    int toLower(int caseCopy);
+    int index = hash(caseCopy);
+    node *pointer = table[index];
+    while (pointer !=NULL)
+    {
+        if (strcmp(pointer -> word, caseCopy)==0)
+        {
+            free(caseCopy);
+            return true;
+        }
+        pointer = pointer-> next;
+    }
+    free(caseCopy);
     return false;
 }
 
 // Hashes word to a number
 unsigned int hash(const char *word)
 {//2nd
-//input: word, alphanumeric and possibly apostrephes
-//output numerical index between 0 and n-1, inclusive
-//deterministic
-//largern = more buckets
+//http://www.cse.yorku.ca/~oz/hash.html djb2
+
+        unsigned long value = 5381;
+        int c=0;
+
+        while (c == *word++)
+            value = ((value << 5) + value) + c; /* hash * 33 + c */
+
+        return value % N;
+    
 
     // TODO
-    return 0;
+    //return 0;
 }
 
 // Loads dictionary into memory, returning true if successful else false
@@ -82,12 +104,22 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {//3rd
     // TODO
-    return 0;
+    return count;
 }
 
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {//5th
     // TODO
-    return false;
+    for( unsigned int i = 0 ; i < N; i++)
+    {
+    node *pointer=table[i];
+    while(pointer !=NULL)
+    {
+        node *temp= pointer;
+        pointer = pointer->next;
+        free(temp);
+    }
+    }
+    return true;
 }
