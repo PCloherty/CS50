@@ -20,7 +20,7 @@ node;
 //first letter
 //first two letters
 //math using all letters
-const unsigned int N = 10000;
+const unsigned int N = 1;
 
 // Hash table
 node *table[N];
@@ -76,7 +76,7 @@ bool load(const char *dictionary)
     char word[LENGTH+1];
     while(fscanf(dictionary_ptr,"%s",word) !=EOF)
     {
-        node *n = malloc(sizeof(node)+1);
+        node *n = malloc(sizeof(node));
         strcpy(n->word,word);
         int index = hash(word);
         if (table[index]==NULL)
