@@ -20,7 +20,7 @@ node;
 //first letter
 //first two letters
 //math using all letters
-const unsigned int N = 10;
+const unsigned int N = 1;
 
 // Hash table
 node *table[N];
@@ -64,17 +64,17 @@ unsigned int hash(const char *word)
 //djb2 algerithm found at
 //http://www.cse.yorku.ca/~oz/hash.html
 //edited for my variables
-        //unsigned long value = 5381;
-        //int c=0;
+        unsigned long value = 5381;
+        int c=0;
 
-        //while (c == *word++)
-          //  value = ((value << 5) + value) + c;
+        while (c == *word++)
+            value = ((value << 5) + value) + c;
 
-//        return value % N;
+        return value % N;
     
 
     // TODO
-    return 1;
+    //return 0;
 }
 
 // Loads dictionary into memory, returning true if successful else false
