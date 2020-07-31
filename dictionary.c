@@ -77,11 +77,14 @@ bool load(const char *dictionary)
     while(fscanf(dictionary_ptr,"%s",word) !=EOF)
     {
         node *n = malloc(sizeof(node));
-        strcpy(n->word,word);
+        if (n==NULL){
+            return false;
+        }
+        strcpy(n->word, word);
         int index = hash(word);
         if (table[index]==NULL)
         {
-            n->next=NULL;
+            //n->next=NULL;
             table[index]=n;
         }
         else
@@ -91,8 +94,9 @@ bool load(const char *dictionary)
         }
         count++;
         //free(n);
+        fclose(dictionary_ptr);
     }
-    fclose(dictionary_ptr);
+    
     return true;
     // TODO
     
