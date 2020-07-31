@@ -97,7 +97,7 @@ bool load(const char *dictionary)
         //free(n);
         
     }
-    free(n);
+    //free(*n);
     fclose(dictionary_ptr);
     return true;
     // TODO
