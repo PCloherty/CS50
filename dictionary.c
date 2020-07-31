@@ -46,7 +46,7 @@ bool check(const char *word)
     
     int index = hash(word);
     node *pointer = table[index];
-    //printf("%s %i : ",pointer->word, index  );
+    //printf("word:%s pointer:%p index:%i : ",pointer->word, pointer , index);
     while (pointer !=NULL)
     {
         if (strcasecmp(word, pointer->word)==0)
@@ -65,9 +65,9 @@ unsigned int hash(const char *word)
 //http://www.cse.yorku.ca/~oz/hash.html
 //edited for my variables
         unsigned long value = 5381;
-        char c ='\0';
+        char c;
 
-        while (c == *word++)
+        while ((c = *word++))
             value = ((value << 5) + value) + c;/* value * 33 + c */
 
         return value % N;
