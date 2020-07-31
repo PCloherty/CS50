@@ -20,7 +20,7 @@ node;
 //first letter
 //first two letters
 //math using all letters
-const unsigned int N = 1000;
+const unsigned int N = 10000;
 
 // Hash table
 node *table[N];
@@ -49,13 +49,14 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {//2nd
-//http://www.cse.yorku.ca/~oz/hash.html djb2
-
+//djb2 algerithm found at
+//http://www.cse.yorku.ca/~oz/hash.html
+//edited for my variables
         unsigned long value = 5381;
         int c=0;
 
         while (c == *word++)
-            value = ((value << 5) + value) + c; /* hash * 33 + c */
+            value = ((value << 5) + value) + c;
 
         return value % N;
     
@@ -75,7 +76,7 @@ bool load(const char *dictionary)
     char word[LENGTH+1];
     while(fscanf(dictionary_ptr,"%s",word) !=EOF)
     {
-        node *n = malloc(sizeof(node));
+        node *n = malloc(sizeof(node)+1);
         strcpy(n->word,word);
         int index = hash(word);
         if (table[index]==NULL)
@@ -85,10 +86,11 @@ bool load(const char *dictionary)
         }
         else
         {
-            n-> next= table[index]-> next;
+            n->next= table[index]->next;
             table[index]=n;
         }
         count++;
+        //free(n);
     }
     fclose(dictionary_ptr);
     return true;
@@ -103,7 +105,7 @@ unsigned int size(void)
     return count;
 }
 
-// Unloads dictionary from memory, returning true if successful else false
+// Unloads dictionary from memeturning true if successful else false
 bool unload(void)
 {//5th
     // TODO
