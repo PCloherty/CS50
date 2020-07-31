@@ -66,7 +66,7 @@ unsigned int hash(const char *word)
 {//2nd
 //djb2 algerithm found at
 //http://www.cse.yorku.ca/~oz/hash.html
-//edited for my variables
+
         unsigned long value = 5381;
         char c;
 
@@ -137,9 +137,9 @@ bool unload(void)
     node *pointer=table[i];
     while(pointer !=NULL)
     {
-        node *temp= pointer;
+        //node *temp= pointer;
         pointer = pointer->next;
-        free(temp);
+        //free(temp);
     }
     }
     return true;
