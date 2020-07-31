@@ -33,7 +33,7 @@ bool check(const char *word)
 {//4th
     // TODO
     
-    char copy[LENGTH+1];
+    char copy[strlen(word)];
     strcpy(copy,word);
     for (int i = 0; copy[i]!='\0'; i++)
     {
@@ -45,15 +45,18 @@ bool check(const char *word)
     
     
     int index = hash(copy);
-    node *pointer = table[index];
-    //printf("word:%s pointer:%p index:%i copy:%s:  ",pointer->word, pointer , index,copy);
-    while (pointer !=NULL)
+    
+    if(table[index] !=NULL)
     {
-        if (strcasecmp(pointer->word,copy)==0)
+        for(node *pointer = table[index]; pointer != NULL;pointer = pointer->next )
         {
-            return true;
+            if (strcasecmp(pointer->word,copy)==0)
+            {
+                return true;
+            }
+            //printf("word:%s pointer:%p index:%i copy:%s:  ",pointer->word, pointer , index,copy);
+
         }
-        //pointer = pointer->next;
     }
     return false;
 }
@@ -86,26 +89,28 @@ bool load(const char *dictionary)
         return false;
     }
     char word[LENGTH+1];
-    node *n = malloc(sizeof(node));
+    node *temp[N];
     while(fscanf(dictionary_ptr,"%s",word) !=EOF)
     {
-        //node *n = malloc(sizeof(node));
+        count++;
+        node *n = malloc(sizeof(node));
         if (n==NULL){
             return false;
         }
         strcpy(n->word, word);
+        n->next = NULL;
         int index = hash(word);
         if (table[index]==NULL)
         {
-            //n->next=NULL;
             table[index]=n;
+            temp[index]=n;
         }
         else
         {
-            n->next= table[index]->next;
-            table[index]=n;
+            temp[index]->next= n;
+            temp[index]=n;
         }
-        count++;
+        
         //free(n);
         
     }
