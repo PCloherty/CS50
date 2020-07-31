@@ -33,20 +33,20 @@ bool check(const char *word)
 {//4th
     // TODO
     
-    //char copy[LENGTH+1];
-    //strcpy(copy,word);
-    //for (int i = 0;copy[i]!='\0';i++)
-    //{/
-    //    if(isupper(copy[i]))
-    //    {
-      //      copy[i]=tolower(copy[i]);
-        //}    
-    //}
+    char copy[LENGTH+1];
+    strcpy(copy,word);
+    for (int i = 0; copy[i]!='\0'; i++)
+    {
+        if(isupper(copy[i]))
+        {
+            copy[i]=tolower(copy[i]);
+        }    
+    }
     
     
-    int index = hash(word);
+    int index = hash(copy);
     node *pointer = table[index];
-    //printf("word:%s pointer:%p index:%i : ",pointer->word, pointer , index);
+    //printf("word:%s pointer:%p index:%i copy:%s:  ",pointer->word, pointer , index,copy);
     while (pointer !=NULL)
     {
         if (strcasecmp(word, pointer->word)==0)
