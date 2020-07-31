@@ -34,7 +34,7 @@ bool check(const char *word)
     
     char copy[strlen(word)];
     strcpy(copy,word);
-    for (int i = 0; copy[i]<(strlen(copy)+1); i++)
+    for (int i = 0; copy[i]<(strlen(word)+1); i++)
     {
         if(isupper(copy[i]))
         {
