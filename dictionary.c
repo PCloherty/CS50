@@ -74,9 +74,10 @@ bool load(const char *dictionary)
         return false;
     }
     char word[LENGTH+1];
+    node *n = malloc(sizeof(node));
     while(fscanf(dictionary_ptr,"%s",word) !=EOF)
     {
-        node *n = malloc(sizeof(node));
+        //node *n = malloc(sizeof(node));
         if (n==NULL){
             return false;
         }
@@ -94,9 +95,10 @@ bool load(const char *dictionary)
         }
         count++;
         //free(n);
-        fclose(dictionary_ptr);
+        
     }
-    
+    free(n);
+    fclose(dictionary_ptr);
     return true;
     // TODO
     
