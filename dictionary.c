@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include "dictionary.h"
 #include <string.h>
-#include <ctype.h>
-//#include <srings.h>
+//#include <ctype.h>
+#include <strings.h>
 
 // Represents a node in a hash table
 typedef struct node
@@ -20,7 +20,7 @@ node;
 //first letter
 //first two letters
 //math using all letters
-const unsigned int N = 10;
+const unsigned int N = 1000;
 
 // Hash table
 node *table[N];
@@ -32,21 +32,17 @@ int count = 0;
 bool check(const char *word)
 {//4th
     // TODO
-    char *caseCopy = malloc(strlen(word));
-    strcpy(caseCopy,word);
-    int tolower(int caseCopy);
-    int index = hash(caseCopy);
+    
+    int index = hash(word);
     node *pointer = table[index];
     while (pointer !=NULL)
     {
-        if (strcmp(pointer -> word, caseCopy)==0)
+        if (strcasecmp(word, pointer->word)==0)
         {
-            free(caseCopy);
             return true;
         }
-        pointer = pointer-> next;
+        pointer = pointer->next;
     }
-    free(caseCopy);
     return false;
 }
 
