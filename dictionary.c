@@ -49,11 +49,11 @@ bool check(const char *word)
     //printf("word:%s pointer:%p index:%i copy:%s:  ",pointer->word, pointer , index,copy);
     while (pointer !=NULL)
     {
-        if (strcasecmp(word, pointer->word)==0)
+        if (strcasecmp(pointer->word,copy)==0)
         {
             return true;
         }
-        pointer = pointer->next;
+        //pointer = pointer->next;
     }
     return false;
 }
