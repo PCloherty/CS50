@@ -31,11 +31,10 @@ int count = 0;
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {//4th
-    // TODO
     
     char copy[strlen(word)];
     strcpy(copy,word);
-    for (int i = 0; copy[i]!='\0'; i++)
+    for (int i = 0; copy[i]<(strlen(copy)+1); i++)
     {
         if(isupper(copy[i]))
         {
@@ -74,10 +73,6 @@ unsigned int hash(const char *word)
             value = ((value << 5) + value) + c;/* value * 33 + c */
 
         return value % N;
-    
-
-    // TODO
-    //return 0;
 }
 
 // Loads dictionary into memory, returning true if successful else false
@@ -111,20 +106,15 @@ bool load(const char *dictionary)
             temp[index]=n;
         }
         
-        //free(n);
         
     }
-    //free(n);
     fclose(dictionary_ptr);
     return true;
-    // TODO
-    
 }
 
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
 unsigned int size(void)
 {//3rd
-    // TODO
     return count;
 }
 
@@ -134,13 +124,13 @@ bool unload(void)
     // TODO
     for( unsigned int i = 0 ; i < N; i++)
     {
-    node *pointer=table[i];
-    while(pointer !=NULL)
-    {
-        node *temp= pointer;
-        pointer = pointer->next;
-        free(temp);
-    }
+        node *pointer=table[i];
+        while(pointer !=NULL)
+        {
+            node *temp= pointer;
+            pointer = pointer->next;
+            free(temp);
+        }
     }
     return true;
 }
