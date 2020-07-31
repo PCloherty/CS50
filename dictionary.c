@@ -111,7 +111,7 @@ bool load(const char *dictionary)
             temp[index]=n;
         }
         
-        free(n);
+        //free(n);
         
     }
     //free(n);
@@ -137,9 +137,9 @@ bool unload(void)
     node *pointer=table[i];
     while(pointer !=NULL)
     {
-        //node *temp= pointer;
+        node *temp= pointer;
         pointer = pointer->next;
-        //free(temp);
+        free(temp);
     }
     }
     return true;
