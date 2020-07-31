@@ -20,7 +20,7 @@ node;
 //first letter
 //first two letters
 //math using all letters
-const unsigned int N = 1;
+const unsigned int N = 143100;
 
 // Hash table
 node *table[N];
