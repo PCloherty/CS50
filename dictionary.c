@@ -44,7 +44,7 @@ bool check(const char *word)
     }
     int index = hash(word);
     node *pointer = table[index];
-    printf("%s : ",pointer->word  );
+    //printf("%s : ",pointer->word  );
     while (pointer !=NULL)
     {
         if (strcasecmp(word, pointer->word)==0)
