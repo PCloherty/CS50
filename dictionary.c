@@ -46,7 +46,7 @@ bool check(const char *word)
     
     int index = hash(word);
     node *pointer = table[index];
-    //printf("%s %i : ",pointer->word, index  );
+    printf("%s %i : ",pointer->word, index  );
     while (pointer !=NULL)
     {
         if (strcasecmp(word, pointer->word)==0)
@@ -64,17 +64,17 @@ unsigned int hash(const char *word)
 //djb2 algerithm found at
 //http://www.cse.yorku.ca/~oz/hash.html
 //edited for my variables
-        //unsigned long value = 5381;
-        //int c=0;
+        unsigned long value = 5381;
+        char c ='\0';
 
-        //while (c == *word++)
-          //  value = ((value << 5) + value) + c;
+        while (c == *word++)
+            value = ((value << 5) + value) + c;/* value * 33 + c */
 
-//        return value % N;
+        return value % N;
     
 
     // TODO
-    return 1;
+    //return 0;
 }
 
 // Loads dictionary into memory, returning true if successful else false
