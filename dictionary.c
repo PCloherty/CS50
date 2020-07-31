@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "dictionary.h"
 #include <string.h>
-//#include <ctype.h>
+#include <ctype.h>
 #include <strings.h>
 
 // Represents a node in a hash table
@@ -20,7 +20,7 @@ node;
 //first letter
 //first two letters
 //math using all letters
-const unsigned int N = 143100;
+const unsigned int N = 1;
 
 // Hash table
 node *table[N];
@@ -33,8 +33,18 @@ bool check(const char *word)
 {//4th
     // TODO
     
+    char copy[LENGTH+1];
+    strcpy(copy,word);
+    for (int i = 0;copy[i]!='\0';i++)
+    {
+        if(isupper(copy[i]))
+        {
+            copy[i]=tolower(copy[i]);
+        }    
+    }
     int index = hash(word);
     node *pointer = table[index];
+    printf("%s : ",pointer->word  );
     while (pointer !=NULL)
     {
         if (strcasecmp(word, pointer->word)==0)
