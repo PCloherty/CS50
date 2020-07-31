@@ -33,15 +33,15 @@ bool check(const char *word)
 {//4th
     // TODO
     
-    char copy[LENGTH+1];
-    strcpy(copy,word);
-    for (int i = 0;copy[i]!='\0';i++)
-    {
-        if(isupper(copy[i]))
-        {
-            copy[i]=tolower(copy[i]);
-        }    
-    }
+    //char copy[LENGTH+1];
+    //strcpy(copy,word);
+    //for (int i = 0;copy[i]!='\0';i++)
+    //{/
+    //    if(isupper(copy[i]))
+    //    {
+      //      copy[i]=tolower(copy[i]);
+        //}    
+    //}
     
     
     int index = hash(word);
