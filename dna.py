@@ -1,6 +1,5 @@
 from sys import argv, exit
 import csv
-import cs50
 import re
 
 
@@ -10,9 +9,7 @@ def main():
         patterns = readerdata.fieldnames[1:]
         # seq is the string of data
         # readerseq is the sequances per person
-        consecCounter = []
-        for p in range(len(patterns)):
-            consecCounter.append(1)
+        consecCounter = [1]*len(patterns)
         with open(argv[2]) as sequance:
             readerseq = list(csv.reader(sequance))
             seq = readerseq[0][0]
