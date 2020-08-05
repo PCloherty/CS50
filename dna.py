@@ -1,5 +1,6 @@
 from sys import argv, exit
 import csv
+import cs50
 import re
 
 
@@ -18,7 +19,7 @@ def main():
             # for number of elements in patterns
             for i in range(len(patterns)):
                 # regex through to get a a number of grouped STR and record heighest amount
-                currentHeighest = 0
+                currentHeighest = 1
                 regex = re.compile(f'({patterns[i]})+')
                 search = regex.finditer(seq)
                 for match in search:
@@ -26,15 +27,17 @@ def main():
                     if consec > len(patterns[i]):
                         if consec > currentHeighest:
                             currentHeighest = consec
+                    
                 # put current heighest into a list
-                consecCounter[i] = currentHeighest/len(patterns[i]) 
+                if currentHeighest != 1:
+                    consecCounter[i] = int(currentHeighest/len(patterns[i])) 
             # create a counter to record how many matches
             matches = 0
             # for each name in the csv file and number of STRs to check
             for line in readerdata:
                 for r in range(len(patterns)):
                     # check that the value in consecCounter matches line[patterns] if so add 1 to match
-                    if consecCounter[r] == int(line[patterns[r]]):
+                    if int(consecCounter[r]) == int(line[patterns[r]]):
                         matches += 1
                         # if matches == the number of patterns to search for print line["name"] and exit
                         if matches == len(patterns):
@@ -42,7 +45,7 @@ def main():
                             exit()
                     else:
                         # reset matches to 0 on next name 
-                        matches = 0
+                        matches=0
             # if no matches, return no match            
             if matches != len(patterns):
                 print("No Match")    
