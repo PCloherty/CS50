@@ -1,1 +1,2 @@
-select DISTINCT name from people join stars on person_id = id where name != "Kevin Bacon" and movie_id in (select movie_id from stars join people  on id = person_id where name = "Kevin Bacon" and birth ="1958")
+select DISTINCT name from people join stars on person_id = id where name != "Kevin Bacon" and movie_id in (
+select movie_id from stars join people  on id = person_id where name = "Kevin Bacon" and birth ="1958")
