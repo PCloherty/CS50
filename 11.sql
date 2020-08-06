@@ -1,1 +1,1 @@
-select title from movies where id in(select movie_id from stars where person_id in (select id from people where name = "Chadwick Boseman") and movie_id in(select movie_id from ratings )) order by rating limit 5
+select title from movies where id in(select movie_id from stars where person_id in (select id from people where name = "Chadwick Boseman") and movie_id in(select movie_id from ratings order by rating asc)) limit 5
