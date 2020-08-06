@@ -1,0 +1,1 @@
+select title, rating from movies inner join ratings on movies.id = ratings.movie_id where year = 2010 and not ratings.rating = "\\n" order by rating desc, title;
