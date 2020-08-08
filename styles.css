@@ -1,8 +1,21 @@
-.container{
-    margin:10% 1% 10% 0%;
-}
 .gallerycard{
     margin:3% 30% 0 30%;
     padding:2%;
 }
-
+.rock{
+    background-color:grey;
+    color:brown;
+}
+.paper{
+    border:black;
+    background-color:white;
+    color:black;
+}
+.scissors{
+    background-color:silver;
+    color:red;
+}
+.jumbotron-fluid{
+    height:100vh;
+    margin-bottom:0;
+}

@@ -11,8 +11,7 @@ function RPSCapsule(){
 function maxScore() {
     let clearUScore = document.getElementById('yourScore');
     let clearBScore = document.getElementById('botScore');
-    if (clearUScore.innerHTML > 5 || 
-        clearBScore.innerHTML > 5) {
+    if (clearUScore.innerHTML === 5 || clearBScore.innerHTML === 5) {
             RPSCapsule();
     }
     
