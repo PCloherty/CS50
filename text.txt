@@ -1,0 +1,10 @@
+export API_KEY=pk_9d9ccf561c194d88837c92aeb4bd51b1 
+pk_9d9ccf561c194d88837c92aeb4bd51b1
+flask run
+
+
+sqlite3 finance.db
+
+
+API URL
+https://cloud-sse.iexapis.com/stable/stock/nflx/quote?token=pk_9d9ccf561c194d88837c92aeb4bd51b1
