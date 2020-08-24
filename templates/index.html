@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    
+    <table class="table">
+        <thead>
+            <tr class="thead-dark" >
+                <th >Symbol</th>
+                <th >Name</th>
+                <th >Shares</th>
+                <th >Price (Per Stock)</th>
+                <th >Total(together)</th>
+            </tr>
+        </thead>
+        {% for row in portfolio %}
+        <tr >
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            
+        </tr>
+        {% endfor %}
+        <tr >
+            <td>CASH</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{cash}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            
+            <td></td>
+            <td></td>
+            <td>Net worth</td>
+            <td><b>{{total_amount}}</b></td>
+            <td></td>
+        </tr>
+    </table>
+    
+{% endblock %}

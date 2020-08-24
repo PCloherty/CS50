@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    
+    <table class="table">
+        <thead>
+            <tr class="thead-dark" >
+                <th>Type</th>
+                <th>Symbol</th>
+                <th>amount </th>
+                <th>Price (Per stock)</th>
+                <th>Total(together)</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        
+        {% for line in history %}
+        <tr >
+            <td>{{ line.transaction_type }}</td>
+            <td>{{ line.symbol }}</td>
+            <td>{{ line.shares_involved }}</td>
+            <td>{{ line.price_at_transaction |usd }}</td>
+            <td>{{ (line.shares_involved * line.price_at_transaction) | usd}}</td>
+            <td>{{ line.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}
